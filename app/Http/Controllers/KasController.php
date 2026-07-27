@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TransactionResource;
 use App\Models\Category;
 use App\Models\Transaction;
 use App\Models\User;
+use Carbon\CarbonInterface;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use App\Http\Resources\TransactionResource;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -490,7 +491,7 @@ class KasController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Support\Collection<int, Category>  $categories
+     * @param  Collection<int, Category>  $categories
      * @return list<array{id: int, nama: string, info: string|null}>
      */
     private function presentCategories($categories): array
