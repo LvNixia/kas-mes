@@ -67,4 +67,12 @@ class User extends Authenticatable implements PasskeyUser
     {
         return $this->hasMany(Category::class);
     }
+
+    /**
+     * @return HasMany<Iuran, $this>
+     */
+    public function iurans(): HasMany
+    {
+        return $this->hasMany(Iuran::class);
+    }
 }

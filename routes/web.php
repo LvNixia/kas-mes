@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IuranController;
 use App\Http\Controllers\KasController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('kas/settings', [KasController::class, 'updateSettings'])->name('kas.settings.update');
     Route::get('kas/backup', [KasController::class, 'downloadBackup'])->name('kas.backup');
     Route::post('kas/restore', [KasController::class, 'restore'])->name('kas.restore');
+
+    Route::get('iuran', [IuranController::class, 'index'])->name('iuran.index');
+    Route::post('iuran', [IuranController::class, 'store'])->name('iuran.store');
+    Route::delete('iuran/{iuran}', [IuranController::class, 'destroy'])->name('iuran.destroy');
+    Route::post('iuran/settings', [IuranController::class, 'updateSetting'])->name('iuran.settings.update');
 });
 
 require __DIR__.'/settings.php';
